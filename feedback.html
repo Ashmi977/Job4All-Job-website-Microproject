@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Review Form - Job4All</title>
+<style>
+    body {
+        font-family: Inter, Arial, sans-serif;
+        background-image: url("back.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 40px;
+        color: #e5e7eb;
+    }
+
+    .container {
+        width: 500px;
+        margin: auto;
+        background: rgba(17, 24, 39, 0.88); 
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    h2 {
+        text-align: center;
+        color: white;
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #e5e7eb;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0 18px 0;
+        border: 1px solid #374151;
+        background: #111827;
+        color: white;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    textarea {
+        min-height: 90px;
+    }
+
+    button {
+        width: 220px;
+        padding: 14px;
+        background: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 17px;
+        display: block;
+        margin: 20px auto 0 auto;
+        transition: 0.25s ease;
+    }
+
+    button:hover {
+        background: #2563eb;
+        transform: translateY(-3px);
+    }
+</style>
+
+    <script>
+       function validateForm() {
+        let name = document.forms["reviewForm"]["name"].value;
+        let phone = document.forms["reviewForm"]["phone"].value;
+        let email = document.forms["reviewForm"]["email"].value;
+        let reason = document.forms["reviewForm"]["reason"].value;
+        let suggestion = document.forms["reviewForm"]["suggestion"].value;
+
+        if (name === "" || phone === "" || email === "" || reason === "" || suggestion === "") {
+            alert("All fields are required!");
+            return false;
+        }
+
+        if (!/^\d{10}$/.test(phone)) {
+            alert("Phone number must be exactly 10 digits!");
+            return false;
+        }
+
+        let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address!");
+            return false;
+        }
+
+        alert("Thank you for your submission!");
+
+        return true;
+    }
+    </script>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Job Review Form - Job4All</h2>
+
+    <form name="reviewForm" action="submit.php" method="POST" onsubmit="return validateForm()">
+
+        <label>Candidate Name:</label>
+        <input type="text" name="name" placeholder="Enter your full name">
+
+        <label>Phone Number:</label>
+        <input type="text" name="phone" placeholder="Enter 10 digit number">
+
+        <label>Email Address:</label>
+        <input type="text" name="email" placeholder="Enter your email">
+
+        <label>Why did you use Job4All?</label>
+        <textarea name="reason" placeholder="Write your review"></textarea>
+        <lable>What should we improve?</lable>
+        <textarea name="suggestion" placeholder="Write your suggestions"></textarea>
+            <button type="submit" style="display:block; margin:20px auto;"><label>Submit Review</label>
+</button>
+    </form>
+</div>
+
+</body>
+</html>

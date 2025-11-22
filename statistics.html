@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Job4All Statistics</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: aliceblue;
+      padding: 0;
+      color: #333;
+      background-image: url(back.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+       }
+    header {
+      background-color: #003366;
+      color: white;
+      color: aliceblue;
+      padding: 10px;
+      text-align: center;
+    }
+    .container {
+      padding: 30px;
+      color: aliceblue;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section {
+      color: aliceblue;
+      margin-bottom: 40px;
+    }
+    h2 {
+      color:aliceblue;
+      margin-bottom: 10px;
+    }
+    .card {
+      color: aliceblue;
+      background: #111827;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 10px 0;
+    }
+    .grid {
+      display: grid;
+      color: aliceblue;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .chart-bar {
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      color: aliceblue;
+      overflow: hidden;
+      margin: 5px 0;
+    }
+    .chart-fill {
+      color: aliceblue;
+      height: 20px;
+      background-color: #007acc;
+      text-align: right;
+      padding-right: 5px;
+      font-size: 12px;
+    }
+    button {
+      background-color: #007acc;
+      color: aliceblue;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      color: aliceblue;
+      background-color: #005fa3;
+    }
+    footer {
+  text-align: right;
+  color: aliceblue;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="text-align:center;">Job4All Platform Statistics</h1>
+    <p>Inclusive jobs for people with disabilities — advancing SDG 10</p>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>Platform Reach</h2>
+      <div class="grid">
+        <div class="card">🧑‍💼 <strong>12,450</strong> jobs posted</div>
+        <div class="card">🏢 <strong>2,300</strong> active employers</div>
+        <div class="card">👥 <strong>8,700</strong> registered job seekers</div>
+        <div class="card">🌐 <strong>15,000+</strong> monthly visitors</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Accessibility Metrics</h2>
+      <div class="card">
+        <p><strong>92%</strong> of listings include accommodations</p>
+        <div class="chart-bar"><div class="chart-fill" style="width:65%">Remote work — 65%</div></div>
+        <div class="chart-bar"><div class="chart-fill" style="width:48%">Wheelchair access — 48%</div></div>
+        <div class="chart-bar"><div class="chart-fill" style="width:32%">Screen reader support — 32%</div></div>
+        <div class="chart-bar"><div class="chart-fill" style="width:27%">Flexible hours — 27%</div></div>
+        <p><strong>78%</strong> include interview accessibility info</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Application Insights</h2>
+      <div class="grid">
+        <div class="card">📨 <strong>34,000</strong> applications submitted</div>
+        <div class="card">⏱️ <strong>3 min</strong> average apply time</div>
+        <div class="card">🔥 Most applied roles: Support, Data Entry, Design</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>SDG 10 Impact</h2>
+      <div class="card">
+        <p><strong>1 in 4</strong> applicants hired through Job4All</p>
+        <p>Industries embracing inclusive hiring:</p>
+        <ul>
+          <li>Tech — 40%</li>
+          <li>Healthcare — 25%</li>
+          <li>Education — 15%</li>
+          <li>Retail — 10%</li>
+        </ul>
+      </div>
+    </div>
+
+     <footer>
+      <div>© Job4All</div>
+      <div class="muted">Demo — no external data.</div>
+    </footer>
+
+  <script>
+    function toggleFeedback() {
+      const list = document.getElementById('feedbackList');
+      list.style.display = list.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>

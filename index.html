@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Post a Job — Job4All</title>
+<style>
+  :root{
+    --bg:#0b0f19;
+    --card:#111827;
+    --accent:#3b82f6;
+    --accent-2:#06d6a0;
+    --muted:#e5e7eb;
+    --radius:12px; --maxw:900px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+    background-image: url(back.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color:var(--muted)}
+
+  .wrap{max-width:var(--maxw);margin:28px auto;padding:20px}
+
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+  .brand{display:flex;gap:12px;align-items:center}
+
+  .logo{width:64px;height:64px;border-radius:12px;object-fit:cover;border:2px solid #3b82f6}
+
+  h1{margin:0;color:white}
+
+  .tag{color:#9ca3af;font-size:13px}
+
+  a.btn{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+
+  a.ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--muted);padding:8px 12px;border-radius:8px;text-decoration:none}
+
+  main{margin-top:20px}
+
+  .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+
+  label{display:block;font-weight:700;margin-bottom:6px;color:#e6eef6}
+
+  input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #263040;background:#111827;color:#fff;margin-bottom:12px;font-size:14px}
+
+  textarea{min-height:140px;resize:vertical}
+
+  .row{display:flex;gap:10px}
+
+  button.action{background:var(--accent);border:none;color:#fff;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700}
+
+  button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--muted);padding:10px 14px;border-radius:8px;cursor:pointer}
+
+  .muted{color:#9ca3af;font-size:13px}
+
+  footer{margin-top:18px;color:#9ca3af;font-size:13px;text-align:center}
+
+  @media(max-width:700px){.row{flex-direction:column}}
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+       <a href="home.html">
+    <img src="logo.png" alt="Job4All Logo" class="logo">
+</a>
+        <div>
+          <h1>Post a Job</h1>
+          <div class="tag">Job4All — inclusive job board</div>
+        </div>
+      </div>
+      <div>
+        <a class="ghost" href="SLA.html">← Back to Jobs</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title" style="color:white;margin-top:0">Create a new job listing</h2>
+        <p class="muted">Fill the form below. Required fields are marked with *</p>
+
+        <form id="postForm" onsubmit="return false;" aria-describedby="help-text">
+          <label for="title">Job title *</label>
+          <input id="title" name="title" type="text" required placeholder="e.g. Customer Support Specialist">
+
+          <label for="company">Company *</label>
+          <input id="company" name="company" type="text" required placeholder="e.g. AccessCare">
+
+          <div class="row">
+            <div style="flex:1">
+              <label for="type">Type</label>
+              <select id="type" name="type">
+                <option value="full-time">Full-time</option>
+                <option value="part-time">Part-time</option>
+                <option value="internship">Internship</option>
+                <option value="remote">Remote</option>
+              </select>
+            </div>
+            <div style="flex:1">
+              <label for="location">Location</label>
+              <input id="location" name="location" type="text" placeholder="City or Remote">
+            </div>
+          </div>
+
+          <label for="accommodations">Accessibility / accommodations</label>
+          <input id="accommodations" name="accommodations" type="text" placeholder="e.g. Wheelchair accessible, flexible hours">
+
+          <label for="description">Short description *</label>
+          <textarea id="description" name="description" maxlength="1000" placeholder="Briefly describe responsibilities and accommodations" required></textarea>
+
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="action" id="submitBtn" type="button">Post job</button>
+            <button class="ghost" id="clearBtn" type="button">Clear</button>
+            <div style="flex:1"></div>
+          </div>
+
+          <div id="help-text" class="muted" style="margin-top:12px">Your post will be stored in this browser for demo purposes. To make this live, connect to a backend.</div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="muted">Double-click the logo on the main page to reset demo data.</div>
+    </footer>
+  </div>
+
+<script>
+  const jobsKey = 'job4all_jobs_v1';
+
+  function loadJobs(){
+    try{ return JSON.parse(localStorage.getItem(jobsKey)) || []; } catch { return []; }
+  }
+  function saveJobs(arr){ localStorage.setItem(jobsKey, JSON.stringify(arr)); }
+
+
+  function isBlank(v){ return !v || v.trim() === ''; }
+
+  document.getElementById('submitBtn').addEventListener('click', ()=>{
+    const title = document.getElementById('title').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const type = document.getElementById('type').value;
+    const location = document.getElementById('location').value.trim();
+    const accommodations = document.getElementById('accommodations').value.trim();
+    const description = document.getElementById('description').value.trim();
+
+  
+    if(isBlank(title)){ alert('Please enter the job title.'); document.getElementById('title').focus(); return; }
+    if(isBlank(company)){ alert('Please enter the company name.'); document.getElementById('company').focus(); return; }
+    if(isBlank(description)){ alert('Please write a short description.'); document.getElementById('description').focus(); return; }
+
+    const job = { title, company, type, location, accommodations, description, ts: Date.now() };
+
+    const arr = loadJobs();
+    arr.push(job);
+    saveJobs(arr);
+
+    alert('Job posted successfully!');
+    window.location.href = 'SLA.html';
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', ()=>{
+    if(confirm('Clear form?')) document.getElementById('postForm').reset();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Job4All Job Hunt Tips</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef4f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-image: url(back.png);
+background-size: cover;
+background-repeat: no-repeat;
+
+
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+    .tip {
+      background: white;
+      border-left: 6px solid #007acc;
+      padding: 15px 20px;
+      margin: 15px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .tip:hover {
+      background-color: #f0f8ff;
+    }
+    .category {
+      font-weight: bold;
+      color: #007acc;
+      margin-bottom: 5px;
+    }
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .thanks-text {
+      text-align: right;
+  color: aliceblue;
+  font-weight: 600;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Job4All: Smart Job Hunt Tips</h1>
+    <p>Empowering inclusive job seekers with practical advice and confidence</p>
+  </header>
+
+  <div class="container">
+    <h2 style="color: aliceblue;">Recommendations for Your Job Hunt</h2>
+
+    <div class="tip">
+      <div class="category">🎯 Customize Your Profile</div>
+      <p>Clearly mention your accessibility needs and preferred accommodations in your application or profile.</p>
+    </div>
+
+    <div class="tip">
+      <div class="category">🔍 Use Smart Filters</div>
+      <p>Search jobs by location, role, and accommodations like remote work or wheelchair access.</p>
+    </div>
+
+    <div class="tip">
+      <div class="category">📝 Highlight Your Strengths</div>
+      <p>Focus on your skills, experience, and adaptability. Use inclusive language and confident tone.</p>
+    </div>
+
+    <div class="tip">
+      <div class="category">💬 Prepare for Accessible Interviews</div>
+      <p>Request interview accommodations in advance and practice responses that showcase your value.</p>
+    </div>
+
+    <div class="tip">
+      <div class="category">📈 Track Your Applications</div>
+      <p>Keep a record of jobs applied to, responses received, and follow-up dates to stay organized.</p>
+    </div>
+
+    <div class="tip">
+      <div class="category">🤝 Connect with Inclusive Employers</div>
+      <p>Look for companies that mention accessibility and diversity in their job descriptions and culture.</p>
+    </div>
+
+    <button onclick="showThanks()">Got It! Let’s Get Started</button>
+    <p id="response" style="margin-top:15px; font-weight:bold;"></p>
+  </div>
+
+  <script>
+    function showThanks() {
+      document.getElementById("response").textContent = "Awesome! You're one step closer to finding the right opportunity.";
+      msg.classList.add("thanks-text");
+    }
+  </script>
+</body>
+</html>

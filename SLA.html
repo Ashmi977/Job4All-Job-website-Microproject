@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Job4All — Inclusive job board</title>
+<style>
+  :root{
+    --bg:#0b0f19;
+    --card:#111827;
+    --accent:#3b82f6;
+    --accent-2:#06d6a0;
+    --muted:#e5e7eb;
+    --radius:12px; 
+    --gap:14px; 
+    --maxw:1100px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{
+    height:100%;
+    margin:0;
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+    color:var(--muted);
+    background-image: url(back.png);
+    background-size: cover;
+    background-repeat: repeat   ;
+  }
+
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:28px auto;padding:20px}
+
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+
+  .logo{width:70px;height:70px;border-radius:14px;object-fit:cover;border:2px solid #3b82f6}
+  h1{margin:0;font-size:22px;color:white}
+  .tag{font-size:13px;color:#9ca3af}
+
+  nav{display:flex;gap:10px;align-items:center}
+  a.ghost{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted)}
+  a.btn{background:var(--accent);color:white;padding:8px 12px;border-radius:8px;text-decoration:none;}
+  button.btn{background:var(--accent);color:white;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;transition:0.3s ease;}
+
+  .hero {display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px;align-items:start;background:url('banner.jpg') center/cover no-repeat;padding:25px;border-radius:14px}
+  .card{background:rgba(17,24,39,0.85);padding:18px;border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,0.4);backdrop-filter: blur(4px)}
+  .lead{color:#d1d5db}
+
+  form label{display:block;font-weight:600;margin-bottom:6px}
+  input[type=text], input[type=email], select, textarea {width:100%;padding:8px;border-radius:8px;border:1px solid #374151;background:#1f2937;color:white;margin-bottom:12px;font-size:14px}
+  textarea{min-height:80px;resize:vertical}
+
+  .jobs{margin-top:18px}
+  .job{padding:12px;border-radius:10px;background:#1e2535;border:1px solid #2e3445;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+  .muted{color:#9ca3af;font-size:13px}
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+  .feature{padding:12px;border-radius:10px;background:#1e2535;border:1px solid #2e3445}
+  .feature p{margin:0;color:#cbd5e1;font-size:14px}
+
+  footer{margin-top:20px;color:#9ca3af;font-size:13px;display:flex;justify-content:space-between;align-items:center}
+
+  .sdg-inline{display:flex;align-items:center;gap:12px;padding:10px 16px;height:80px;background:rgba(255,255,255,0.08);border-radius:12px;border:1px solid rgba(255,255,255,0.12)}
+  .sdg-inline .sdg-num{width:56px;height:56px;border-radius:10px;background:#f3a712;display:flex;align-items:center;justify-content:center;color:#0b1220;font-weight:900;font-size:22px}
+  .sdg-inline .sdg-label{font-size:15px;color:var(--muted);font-weight:700}
+
+  @media(max-width:980px){.hero{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.features{grid-template-columns:1fr}}
+  button.btn:hover{background:#2563eb;transform:translateY(-2px);} 
+  a.btn:hover{background:#2563eb;transform:translateY(-2px);} 
+  a[href="resume.html"]{transition:0.3s ease;}
+  a[href="resume.html"]:hover{background:#2563eb !important;transform:translateY(-2px);} 
+</style>
+</head>
+
+<body>
+  <div class="wrap" role="application">
+    <header>
+      <div class="brand">
+        <a href="home.html"><img src="logo.png" alt="Job4All Logo" class="logo"></a>
+        
+        <a href="SDG.html">
+        <div class="sdg-inline" style="margin-left:6px;">
+          <div class="sdg-num">10</div>
+          <div class="sdg-label">SDG 10 — Reduced Inequality</div>
+        </div>
+        </a>
+
+        <div>
+          <h1>Job4All</h1>
+          <div class="tag">Inclusive job board for people with disabilities</div>
+        </div>
+      </div>
+
+      <nav>
+        <a class="btn" href="SLA.html">Browse Jobs</a>
+      </nav>
+    </header>
+
+    <main id="main" class="hero" tabindex="-1" role="main">
+
+      <section class="card">
+        <h2 style="color:white">Find accessible jobs or post inclusive opportunities</h2>
+        <p class="lead">Job4All helps employers and job seekers find roles with reasonable accommodations, accessible workplaces, and inclusive practices.</p>
+
+        <div class="controls" style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <input id="search" type="text" placeholder="Search jobs or companies">
+
+          <select id="salaryRange" aria-label="Expected salary">
+            <option value="">Any salary</option>
+            <option value="0-25000">Up to ₹25,000</option>
+            <option value="25000-50000">₹25,000 - ₹50,000</option>
+            <option value="50000-100000">₹50,000 - ₹1,00,000</option>
+            <option value="100000+">₹1,00,000+</option>
+          </select>
+
+          <select id="jobCategory" aria-label="Job category">
+            <option value="">All categories</option>
+            <option value="digital-marketing">Digital Marketing</option>
+            <option value="social-media">Social Media Manager</option>
+            <option value="software-development">Software Development</option>
+            <option value="design">Design</option>
+            <option value="data-science">Data Science</option>
+            <option value="customer-support">Customer Support</option>
+            <option value="sales">Sales</option>
+            <option value="hr">Human Resources</option>
+          </select>
+
+          <select id="filterType">
+            <option value="">All types</option>
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+            <option value="internship">Internship</option>
+            <option value="remote">Remote</option>
+          </select>
+
+          <button class="btn" id="searchBtn">Search</button>
+        </div>
+
+        <div class="jobs" id="jobsList"></div>
+
+        <section class="card" style="margin-top:18px;padding:18px;border-radius:12px;background:rgba(17,24,39,0.88);box-shadow:0 8px 24px rgba(0,0,0,0.45);">
+          <h3 style="color:white;margin-top:0;">Create Your Resume</h3>
+          <p class="lead" style="margin-bottom:12px;">Build a clean, professional resume in just a few minutes. Customize your skills, experience, education and download instantly.</p>
+          <div style="display:flex;gap:10px;align-items:center">
+            <a href="resume.html" style="display:inline-block;background:#3b82f6;color:white;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;">Make a Resume</a>
+            <label for="resumeUpload" style="display:inline-block;background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.08);padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600">Upload Resume</label>
+            <input id="resumeUpload" type="file" accept=".pdf,.doc,.docx" style="display:none">
+            <div id="uploadedName" style="color:#9ca3af;font-size:13px;margin-left:8px"></div>
+          </div>
+        </section>
+
+      </section>
+
+      <aside class="card">
+        <h3 style="color:white"><a href="index.html" style="color:white; text-decoration:none;">Post a Job</a></h3>
+        <p class="muted">Your posting stays in this browser only (demo).</p>
+
+        <form id="jobForm" onsubmit="return false;">
+          <label>Job title</label>
+          <input id="title" type="text">
+
+          <label>Company</label>
+          <input id="company" type="text">
+
+          <label>Type</label>
+          <select id="type">
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+            <option value="internship">Internship</option>
+            <option value="remote">Remote</option>
+          </select>
+
+          <label>Location</label>
+          <input id="location" type="text">
+
+          <label>Accessibility / accommodations</label>
+          <input id="accommodations" type="text">
+
+          <label>Description</label>
+          <textarea id="description"></textarea>
+
+          <button class="btn" id="addJob">Add job</button>
+        </form>
+      </aside>
+    </main>
+
+    <section style="margin-top:24px;display:flex;gap:16px;justify-content:center;">
+      <a href="statistics.html" class="btn">View Statistics</a>
+      <a href="rec.html" class="btn" style="background:var(--accent-2);">See Recommendations</a>
+    </section>
+
+
+    <section id="support" style="margin-top:24px;background:rgba(17,24,39,0.85);padding:20px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.4);backdrop-filter:blur(4px);">
+      <h2 style="margin:0 0 10px 0;color:white;">Customer Support</h2>
+      <p style="color:#d1d5db;margin-bottom:12px;">Need help? Our support team is available to assist you with job postings, applications, or accessibility issues.</p>
+      <ul style="color:#9ca3af;line-height:1.8;margin:0;padding-left:18px;">
+        <li>Email: support@job4all.com</li>
+        <li>Phone: +1 800 234 567</li>
+        <li>Live chat: Available in the bottom-right corner</li>
+      </ul>
+    </section>
+
+    <footer>
+      <div>© Job4All</div>
+      <div class="muted">Demo — no external data.</div>
+    </footer>
+  </div>
+
+<script>
+  (function(){
+    var up = document.getElementById('resumeUpload');
+    var nameEl = document.getElementById('uploadedName');
+    if(up){
+      up.addEventListener('change', function(e){
+        var f = this.files && this.files[0]; if(!f) return;
+        try{ localStorage.setItem('job4all_uploaded_resume_name', f.name); }catch(err){}
+        if(nameEl) nameEl.textContent = 'Uploaded: ' + f.name;
+        alert('Resume "' + f.name + '" uploaded (demo).');
+      });
+      try{ var prev = localStorage.getItem('job4all_uploaded_resume_name'); if(prev && nameEl) nameEl.textContent = 'Uploaded: ' + prev; }catch(e){}
+    }
+  })();
+
+  const jobsKey = 'job4all_jobs_v1';
+  const jobsList = document.getElementById('jobsList');
+
+  function loadJobs(){ try{return JSON.parse(localStorage.getItem(jobsKey)) || []; }catch(e){return [];} }
+  function saveJobs(j){ localStorage.setItem(jobsKey, JSON.stringify(j)); }
+  function escapeHtml(s){ if(!s) return ''; return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+  function renderJobs(){
+    const jobs = loadJobs();
+    const q = (document.getElementById('search')||{}).value || '';
+    const cat = (document.getElementById('jobCategory')||{}).value || '';
+    const type = (document.getElementById('filterType')||{}).value || '';
+    const salary = (document.getElementById('salaryRange')||{}).value || '';
+
+    const filtered = jobs.filter(j=>{
+      if(cat && j.category !== cat) return false;
+      if(type && j.type !== type) return false;
+      if(q && !( (j.title||'').toLowerCase().includes(q.toLowerCase()) || (j.company||'').toLowerCase().includes(q.toLowerCase()) || (j.description||'').toLowerCase().includes(q.toLowerCase()) )) return false;
+      if(salary && j.salaryRange){
+        if(j.salaryRange !== salary) return false;
+      }
+      return true;
+    });
+
+    jobsList.innerHTML = '';
+    if(filtered.length === 0){ jobsList.innerHTML = '<div class="muted">No jobs found. Post one using the form on the right.</div>'; return; }
+
+    filtered.forEach((j,i)=>{
+      const d = document.createElement('div'); d.className = 'job';
+      d.innerHTML = `
+        <div>
+          <strong style="color:white">${escapeHtml(j.title)}</strong>
+          <div class="muted">${escapeHtml(j.company)} • ${escapeHtml(j.type)}${j.location?(' • '+escapeHtml(j.location)) : ''}</div>
+          <div style="margin-top:6px;color:#d1d5db">${escapeHtml(j.description||'')}</div>
+          <div class="muted" style="margin-top:6px">Accommodations: ${escapeHtml(j.accommodations||'Not specified')}</div>
+        </div>
+        <div style="text-align:right">
+          <button class="btn" data-idx="${i}">Apply</button>
+        </div>
+      `;
+      jobsList.appendChild(d);
+    });
+  }
+
+  (function init(){
+    try{ localStorage.removeItem(jobsKey); }catch(e){}
+    saveJobs([]);
+    renderJobs();
+  })();
+
+  document.getElementById('addJob').addEventListener('click', ()=>{
+    const job = {
+      title: document.getElementById('title').value.trim(),
+      company: document.getElementById('company').value.trim(),
+      type: document.getElementById('type').value,
+      location: document.getElementById('location').value.trim(),
+      accommodations: document.getElementById('accommodations').value.trim(),
+      description: document.getElementById('description').value.trim(),
+      category: document.getElementById('jobCategory') ? document.getElementById('jobCategory').value : '',
+      salaryRange: document.getElementById('salaryRange') ? document.getElementById('salaryRange').value : ''
+    };
+    if(!job.title || !job.company){ alert('Please enter job title and company.'); return; }
+    const jobs = loadJobs(); jobs.push(job); saveJobs(jobs); renderJobs(); document.getElementById('jobForm').reset(); alert('Job posted (demo).');
+  });
+
+  document.getElementById('searchBtn').addEventListener('click', ()=>{ renderJobs(); alert('Details will be sent to your email soon.'); });
+
+  document.getElementById('jobsList').addEventListener('click', (e)=>{
+    const btn = e.target.closest('button[data-idx]');
+    if(!btn) return;
+    const idx = Number(btn.dataset.idx);
+    const jobs = loadJobs();
+    const job = jobs[idx];
+    if(!job){ alert('Job not found.'); return; }
+    alert('Application sent for ' + job.title + ' (demo).');
+  });
+
+</script>
+</body>
+</html>

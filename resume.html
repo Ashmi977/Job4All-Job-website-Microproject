@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume Builder</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: aliceblue;
+      background: #0A0A23 url(back.png) no-repeat center/cover;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(10, 10, 35, 0.85);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      text-align: center;
+      color: aliceblue;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #dbe3ff;
+      font-size: 14px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: #3b82f6;
+      outline: none;
+      box-shadow: 0 0 8px rgba(59,130,246,0.5);
+    }
+
+    /* ⭐ CENTER BUTTONS PERFECTLY ⭐ */
+    .center-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 20px;
+      gap: 15px;
+    }
+
+    button {
+      padding: 15px 30px;
+      background: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: 0.2s ease;
+      min-width: 180px;
+      text-align: center;
+    }
+
+    button:hover {
+      background: #005a9e;
+      transform: translateY(-2px);
+    }
+
+    #resumeOutput {
+      margin-top: 25px;
+      padding: 20px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      backdrop-filter: blur(3px);
+    }
+
+    #resumeOutput h2,
+    #resumeOutput h3 {
+      color: #ffffff;
+    }
+
+    #resumeOutput p,
+    #resumeOutput li {
+      color: #d1d5db;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Resume Builder</h1>
+
+    <form id="resumeForm">
+      <label>Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label>Email:</label>
+      <input type="email" id="email" required>
+
+      <label>Phone:</label>
+      <input type="tel" id="phone" required>
+
+      <label>Summary:</label>
+      <textarea id="summary" rows="4"></textarea>
+
+      <label>Skills (comma separated):</label>
+      <input type="text" id="skills">
+
+      <label>Education:</label>
+      <textarea id="education" rows="3"></textarea>
+
+      <label>Desired Jobs:</label>
+      <textarea id="desiredJobs" rows="3"></textarea>
+
+      <label>Experience:</label>
+      <textarea id="experience" rows="3"></textarea>
+
+      <!-- ⭐ CENTERED BUTTONS ⭐ -->
+      <div class="center-button">
+        <button type="button" onclick="generateResume()">Generate Resume</button>
+        <button type="button" onclick="printResume()">Print / Save</button>
+      </div>
+    </form>
+
+    <div id="resumeOutput">
+      <p style="text-align:center; color:#9aa6b2;">Your generated resume will appear here.</p>
+    </div>
+  </div>
+
+<script>
+function createSafe(text){
+  if (!text) return "";
+  return text.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function generateResume() {
+  const name = createSafe(document.getElementById("name").value);
+  const email = createSafe(document.getElementById("email").value);
+  const phone = createSafe(document.getElementById("phone").value);
+  const summary = createSafe(document.getElementById("summary").value);
+  const education = createSafe(document.getElementById("education").value);
+  const experience = createSafe(document.getElementById("experience").value);
+  const desired = createSafe(document.getElementById("desiredJobs").value);
+  const skillsRaw = document.getElementById("skills").value;
+
+  const skills = skillsRaw
+    ? skillsRaw.split(",").map(s => `<li>${createSafe(s.trim())}</li>`).join("")
+    : "<li>No skills listed</li>";
+
+  const html = `
+    <h2>${name}</h2>
+    <p><strong>Email:</strong> ${email} | <strong>Phone:</strong> ${phone}</p>
+
+    <h3>Summary</h3>
+    <p>${summary}</p>
+
+    <h3>Skills</h3>
+    <ul>${skills}</ul>
+
+    <h3>Education</h3>
+    <p>${education}</p>
+
+    <h3>Desired Jobs</h3>
+    <p>${desired}</p>
+
+    <h3>Experience</h3>
+    <p>${experience}</p>
+  `;
+
+  document.getElementById("resumeOutput").innerHTML = html;
+}
+
+function printResume() {
+  window.print();
+}
+</script>
+
+</body>
+</html>
